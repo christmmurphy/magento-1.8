@@ -1,0 +1,17 @@
+<?php
+$helper							 = Mage::helper('magepsycho_loginredirectpro');
+$logoutRedirectionUrl            = Mage::getSingleton('customer/session')->getAfterLogoutUrlClrp();
+$logoutRedirectionUrl			 = $logoutRedirectionUrl ? $logoutRedirectionUrl : $helper->getRedirectionUrl('logout');
+$logoutMessage					 = $helper->getConfig('logout_custom_message');
+$delaySecs						 = $helper->getConfig('logout_delay_time', 'option', 5);
+$delayMilliSecs					 = (int) $delaySecs * 1000;
+?>
+<div class="page-title">
+    <h1><?php echo Mage::helper('customer')->__('You are now logged out') ?></h1>
+</div>
+<p><?php echo Mage::helper('customer')->__($logoutMessage, $delaySecs) ?></p>
+<script type="text/javascript">
+//<![CDATA[
+    setTimeout(function(){ location.href = '<?php echo $logoutRedirectionUrl ?>' }, <?php echo $delayMilliSecs; ?>);
+//]]>
+</script>

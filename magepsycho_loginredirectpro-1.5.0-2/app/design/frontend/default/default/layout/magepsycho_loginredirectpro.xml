@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default></default>
+    <customer_account_logoutsuccess>
+        <reference name="content">
+			<action method="unsetChild" ifconfig="magepsycho_loginredirectpro/option/active"><name>customer_logout</name></action>
+            <block type="core/template" name="magepsycho_loginredirectpro_customer_logout">
+				<action method="setTemplate" ifconfig="magepsycho_loginredirectpro/option/active"><template>magepsycho/loginredirectpro/customer/logout.phtml</template></action>
+			</block>
+        </reference>
+    </customer_account_logoutsuccess>
+</layout>
